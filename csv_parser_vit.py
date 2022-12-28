@@ -1,9 +1,8 @@
 import csv
-from pprint import pprint as pp
 import openpyxl
 
 # рабочие переменные
-file_csv_from_mis = 'out_data1.csv'
+file_csv_from_mis = 'out_data.csv'
 staff_dict = {}
 
 # чтение построчно файла csv и заполнение словаря со счётом уникальных значений
@@ -12,16 +11,14 @@ with open(file_csv_from_mis, encoding='cp1251', newline='') as csvfile:
 
     for row in row_csv_content:
         if row_csv_content.line_num == 1:
-            staff_dict[row[9]] = ''
+            staff_dict[row[9]] = 'Количество'
         else:
             if staff_dict.get(row[9], False):
                 staff_dict[row[9]] = staff_dict[row[9]] + 1
             else:
                 staff_dict[row[9]] = 1
 
-pp(staff_dict)
-
-file_xls = 'out_data1.xlsx'
+file_xls = 'out_data.xlsx'
 
 # создание книги xls и активация рабочего листа
 wb = openpyxl.Workbook()
@@ -35,5 +32,3 @@ for key, val in staff_dict.items():
 # сохранение файла xls и закрытие его
 wb.save(file_xls)
 wb.close()
-
-
