@@ -12,10 +12,9 @@ with open(file_csv_from_mis, encoding='cp1251', newline='') as csvfile:
             staff_dict[row[9]] = ''
         else:
             if staff_dict.get(row[9], False):
-                print('est')
+                print(staff_dict.get(row[9], False))
                 staff_dict[row[9]] = staff_dict[row[9]] + 1
             else:
-                print('no')
                 staff_dict[row[9]] = 1
 
 pp(staff_dict)
