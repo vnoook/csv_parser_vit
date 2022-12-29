@@ -2,11 +2,11 @@ import csv
 import openpyxl
 
 # рабочие переменные
-file_csv_from_mis = 'out_data.csv'
+file_csv = 'out_data.csv'
 staff_dict = {}
 
 # чтение построчно файла csv и заполнение словаря со счётом уникальных значений
-with open(file_csv_from_mis, encoding='cp1251', newline='') as csvfile:
+with open(file_csv, encoding='cp1251', newline='') as csvfile:
     row_csv_content = csv.reader(csvfile, delimiter=';')
 
     for row in row_csv_content:
@@ -32,3 +32,5 @@ for key, val in staff_dict.items():
 # сохранение файла xls и закрытие его
 wb.save(file_xls)
 wb.close()
+
+input('Нажмите ENTER')
